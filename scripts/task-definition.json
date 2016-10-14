@@ -8,7 +8,6 @@
             "cpu": 128,
             "memory": 256,
             "essential": true,
-            "links": ["${AWS_REDIS_HOST}"],
             "portMappings": [
                 {
                     "containerPort": 5000,
@@ -20,19 +19,8 @@
                 {
                     "name": "VIRTUAL_HOST",
                     "value": "${AWS_VIRTUAL_HOST}"
-                },
-                {
-                    "name": "AWS_REDIS_HOST",
-                    "value": "${AWS_REDIS_HOST}"
                 }
             ]
-        },
-        {
-            "name": "${AWS_REDIS_HOST}",
-            "image": "redis:3.2",
-            "cpu": 128,
-            "memory": 128,
-            "essential": true
         }
     ]
 }
