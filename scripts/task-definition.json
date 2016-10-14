@@ -1,0 +1,38 @@
+{
+    "family": "${ECS_TASK}",
+    "networkMode": "bridge",
+    "containerDefinitions": [
+        {
+            "image": "${AWS_ECS_REPO_DOMAIN}/${IMAGE_NAME}:${IMAGE_VERSION}",
+            "name": "${IMAGE_NAME}-container",
+            "cpu": 128,
+            "memory": 256,
+            "essential": true,
+            "links": ["${AWS_REDIS_HOST}"],
+            "portMappings": [
+                {
+                    "containerPort": 5000,
+                    "hostPort": 0,
+                    "protocol": "tcp"
+                }
+            ],
+            "environment": [
+                {
+                    "name": "VIRTUAL_HOST",
+                    "value": "${AWS_VIRTUAL_HOST}"
+                },
+                {
+                    "name": "AWS_REDIS_HOST",
+                    "value": "${AWS_REDIS_HOST}"
+                }
+            ]
+        },
+        {
+            "name": "${AWS_REDIS_HOST}",
+            "image": "redis:3.2",
+            "cpu": 128,
+            "memory": 128,
+            "essential": true
+        }
+    ]
+}
