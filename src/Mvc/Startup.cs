@@ -1,4 +1,5 @@
-﻿using System.Net;
+﻿using System.IO;
+using System.Net;
 using System.Reflection;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -8,6 +9,7 @@ using Microsoft.Extensions.Logging;
 using Mvc.Controllers;
 using ServiceStack;
 using ServiceStack.Auth;
+using ServiceStack.Configuration;
 using ServiceStack.Data;
 using ServiceStack.Mvc;
 using ServiceStack.OrmLite;
@@ -87,8 +89,14 @@ namespace Mvc
 
     public class AppHost : AppHostBase
     {
-        public AppHost() 
-            : base("ServiceStack + .NET Core", typeof(MyServices).GetTypeInfo().Assembly) {}
+        public AppHost()
+            : base("ServiceStack + .NET Core", typeof(MyServices).GetTypeInfo().Assembly)
+        {
+            var liveSettings = MapProjectPath("~/appsettings.txt");
+            AppSettings = File.Exists(liveSettings)
+                ? (IAppSettings)new TextFileSettings(liveSettings)
+                : new AppSettings();
+        }
 
         public override void Configure(Funq.Container container)
         {
