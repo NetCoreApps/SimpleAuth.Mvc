@@ -3,8 +3,8 @@ DebugMode True
 oauth.RedirectUrl http://mvc.netcore.io/
 oauth.CallbackUrl http://mvc.netcore.io/auth/{0}
 
-oauth.twitter.ConsumerKey c896a8c5e2fd3776a965
-oauth.twitter.ConsumerSecret 35314791c675520f633de488e3b16be4971ec48f
+oauth.twitter.ConsumerKey NubsvCFztIdO448a2v92o9rYH
+oauth.twitter.ConsumerSecret 2C8aQSbCK6gKu0AxJOjRKh0q7viTyU0qgDl6WcCkZeSEXF01fm
 
 oauth.facebook.Permissions email
 oauth.facebook.AppId 868452679921646
