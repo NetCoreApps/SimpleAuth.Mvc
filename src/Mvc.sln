@@ -1,9 +1,9 @@
-﻿
+
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.26114.2
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Mvc", "Mvc\Mvc.xproj", "{01BAE34E-A181-40DC-B7D5-0A30A3140853}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mvc", "Mvc\Mvc.csproj", "{01BAE34E-A181-40DC-B7D5-0A30A3140853}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "deploy", "deploy", "{DAF77A38-53E5-4D08-B264-91C1A549C7A9}"
 	ProjectSection(SolutionItems) = preProject
