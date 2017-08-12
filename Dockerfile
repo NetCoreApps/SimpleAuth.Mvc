@@ -5,5 +5,5 @@ WORKDIR /app
 RUN ["dotnet", "restore"]
 RUN ["dotnet", "build"]
 EXPOSE 5000/tcp
-ENV ASPNETCORE_URLS https://*:5000
-ENTRYPOINT ["dotnet", "run", "--server.urls", "http://*:5000"]
+ENV ASPNETCORE_URLS https://*:11001
+ENTRYPOINT ["dotnet", "run", "--server.urls", "http://*:11001"]
