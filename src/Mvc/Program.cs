@@ -15,7 +15,7 @@ namespace Mvc
                 .UseKestrel()
                 .UseContentRoot(Directory.GetCurrentDirectory())
                 .UseIISIntegration()
-                .UseUrls("http://localhost:11001/")
+                .UseUrls("http://0.0.0.0:11001/")
                 .UseStartup<Startup>()
                 .Build();
 
