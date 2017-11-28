@@ -90,7 +90,7 @@ namespace Mvc
             authRepo.DropAndReCreateTables();
 
             CreateUser(authRepo, 1, "test", "test", new List<string> { "TheRole" }, new List<string> { "ThePermission" });
-            CreateUser(authRepo, 2, "test2", "test2");
+            CreateUser(authRepo, 2, "test2", "test");
         }
 
         private static void CreateUser(OrmLiteAuthRepository authRepo,

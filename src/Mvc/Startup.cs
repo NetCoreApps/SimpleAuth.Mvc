@@ -18,17 +18,8 @@ namespace Mvc
 {
     public class Startup
     {
-        public Startup(IHostingEnvironment env)
-        {
-            var builder = new ConfigurationBuilder()
-                .SetBasePath(env.ContentRootPath)
-                .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
-                .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
-                .AddEnvironmentVariables();
-            Configuration = builder.Build();
-        }
-
-        public IConfigurationRoot Configuration { get; }
+        IConfiguration Configuration { get; set; }
+        public Startup(IConfiguration configuration) => Configuration = configuration;
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
@@ -58,7 +49,9 @@ namespace Mvc
 
             app.UseStaticFiles();
 
-            app.UseServiceStack(new AppHost());
+            app.UseServiceStack(new AppHost {
+                AppSettings = new NetCoreAppSettings(Configuration)
+            });
 
             app.UseMvc(routes =>
             {
@@ -90,13 +83,7 @@ namespace Mvc
     public class AppHost : AppHostBase
     {
         public AppHost()
-            : base("ServiceStack + .NET Core", typeof(MyServices).GetTypeInfo().Assembly)
-        {
-            var liveSettings = MapProjectPath("~/appsettings.txt");
-            AppSettings = File.Exists(liveSettings)
-                ? (IAppSettings)new TextFileSettings(liveSettings)
-                : new AppSettings();
-        }
+            : base("ServiceStack + .NET Core", typeof(MyServices).Assembly) {}
 
         public override void Configure(Funq.Container container)
         {

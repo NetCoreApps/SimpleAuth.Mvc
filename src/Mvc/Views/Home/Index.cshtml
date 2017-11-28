@@ -186,13 +186,13 @@
 
 @section footer {
     <div style="padding: 10px">
-        @if (!Model.UserAuths.IsEmpty())
+        @if (Model.UserAuths?.Count > 0)
         {
             <h3>User Auths</h3>
             <div class="autogrid" id="userauths"></div>
         }
 
-        @if (!Model.UserAuthDetails.IsEmpty())
+        @if (Model.UserAuthDetails?.Count > 0)
         {
             <h3>User Auth Details</h3>
             <div class="autogrid" id="userauthdetails"></div>
