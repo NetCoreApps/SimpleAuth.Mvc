@@ -1,9 +1,13 @@
-FROM microsoft/dotnet:latest
-COPY src/Mvc /app
-COPY src/Mvc/deploy /app
+FROM microsoft/aspnetcore-build:2.0 AS build-env
+COPY src /app
 WORKDIR /app
-RUN ["dotnet", "restore"]
-RUN ["dotnet", "build"]
-EXPOSE 11001/tcp
-ENV ASPNETCORE_URLS https://*:11001
-ENTRYPOINT ["dotnet", "run", "--server.urls", "http://*:11001"]
+
+RUN dotnet restore --configfile ../NuGet.Config
+RUN dotnet publish -c Release -o out
+
+# Build runtime image
+FROM microsoft/aspnetcore:2.0
+WORKDIR /app
+COPY --from=build-env /app/Mvc/out .
+ENV ASPNETCORE_URLS http://*:5000
+ENTRYPOINT ["dotnet", "Mvc.dll"]
