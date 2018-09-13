@@ -11,6 +11,7 @@ Simple Auth demo showcasing integration with ServiceStack and ASP.NET .NET Core 
     - Twitter
     - Facebook
     - GitHub
+    - Google
     - VK
     - Yandex
   - [JS Utils and Forms AutoBinding](http://docs.servicestack.net/ss-utils-js.html)
