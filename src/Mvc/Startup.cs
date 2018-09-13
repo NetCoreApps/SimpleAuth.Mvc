@@ -102,6 +102,7 @@ namespace Mvc
                     new TwitterAuthProvider(AppSettings),       //Sign-in with Twitter
                     new FacebookAuthProvider(AppSettings),      //Sign-in with Facebook
                     new GithubAuthProvider(AppSettings),        //Sign-in with GitHub OAuth Provider
+                    new GoogleAuthProvider(AppSettings),        //Sign-in with Google OAuth Provider
                     new YandexAuthProvider(AppSettings),        //Sign-in with Yandex OAuth Provider        
                     new VkAuthProvider(AppSettings),            //Sign-in with VK.com OAuth Provider 
                 })
