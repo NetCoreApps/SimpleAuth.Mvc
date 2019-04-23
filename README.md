@@ -2,7 +2,9 @@
 
 Simple Auth demo showcasing integration with ServiceStack and ASP.NET .NET Core MVC
 
-[![](https://raw.githubusercontent.com/ServiceStack/Assets/master/img/livedemos/mvc.png)](http://mvc.netcore.io)
+[![](https://raw.githubusercontent.com/ServiceStack/Assets/master/img/livedemos/mvc.png)](https://mvc.netcore.io)
+
+> Live Demo https://mvc.netcore.io
 
 #### Features
 
