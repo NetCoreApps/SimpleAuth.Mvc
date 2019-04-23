@@ -40,7 +40,6 @@ namespace Mvc
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseBrowserLink();
             }
             else
             {
@@ -87,6 +86,10 @@ namespace Mvc
 
         public override void Configure(Funq.Container container)
         {
+            SetConfig(new HostConfig {
+                DebugMode = HostingEnvironment.IsDevelopment()
+            });
+
             Plugins.Add(new RazorFormat());
 
             //Works but recommend handling 404 at end of .NET Core pipeline

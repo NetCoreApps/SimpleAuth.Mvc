@@ -76,7 +76,7 @@
         <div id="autherror" class="error"></div>
 
         <form action="/Home/Login">
-            @Html.ValidationSummary()
+            @Html.ValidationSummary(exceptFields: new []{ "userName", "password" })
             <input type="hidden" name="redirect" value="@Html.GetQueryString("redirect")" />
 
             <div class="form-group">
