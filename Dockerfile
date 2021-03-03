@@ -1,13 +1,13 @@
 FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
-COPY src /app
-WORKDIR /app
+WORKDIR /source
 
-RUN dotnet restore
-RUN dotnet publish -c Release -o out
+COPY . .
+RUN dotnet restore ./src
 
-# Build runtime image
+WORKDIR /source/src
+RUN dotnet publish -c release -o /app --no-restore
+
 FROM mcr.microsoft.com/dotnet/aspnet:5.0 AS runtime
 WORKDIR /app
-COPY --from=build /app/out .
-ENV ASPNETCORE_URLS http://*:5000
+COPY --from=build /app ./
 ENTRYPOINT ["dotnet", "Mvc.dll"]
